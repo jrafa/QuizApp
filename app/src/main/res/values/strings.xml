@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Quiz App</string>
+    <string name="quiz_name">Python quiz</string>
+    <string name="question_first">1. Which of the following answers is set?</string>
+    <string name="question_second">2. What is the output of print(h[::-1]) \nif h = \'hello\'?</string>
+    <string name="question_third">3. What is the output of \nmax([1001, 99, 1])?</string>
+    <string name="question_fourth">4. What is the output of print(mp[6])\n if mp = \'Monty Python\'?</string>
+    <string name="question_fifth">5. What is the output of \nmap(lambda el: str(el), l) if l = [1, 2, 3]?</string>
+    <string name="question_first_answer_first">s = set()</string>
+    <string name="question_first_answer_second">s = {0}</string>
+    <string name="question_first_answer_third">s = []</string>
+    <string name="question_second_answer_first">\'olleh\'</string>
+    <string name="question_second_answer_second">[\'h\', \'e\', \'l\', \'l\', \'o\']</string>
+    <string name="question_second_answer_third">\'hello\'</string>
+    <string name="question_third_answer_correct">1001</string>
+    <string name="question_fourth_answer_correct">P</string>
+    <string name="question_fifth_answer_first">\'123\'</string>
+    <string name="question_fifth_answer_second">[1, 2, 3]</string>
+    <string name="question_fifth_answer_third">[\'1\', \'2\', \'3\']</string>
+</resources>
