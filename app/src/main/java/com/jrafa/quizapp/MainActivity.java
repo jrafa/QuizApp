@@ -23,11 +23,42 @@ public class MainActivity extends AppCompatActivity {
     // Map where messages are stored
     private Map<Integer, String> messages = new HashMap<Integer, String>();
 
+    // Answers to Question 1
+    private CheckBox answerCorrectFirstQuestionFirst;
+    private CheckBox answerCorrectSecondQuestionFirst;
+    private CheckBox answerWrongQuestionFirst;
+
+    // Answer to Question 2
+    private RadioButton answerCorrectQuestionSecond;
+
+    // Answer to Question 3
+    private EditText answerCorrectQuestionThird;
+
+    // Answer to Question 4
+    private EditText answerCorrectQuestionFourth;
+
+    // Answer to Question 5
+    private RadioButton answerCorrectQuestionFifth;
+
+    // Radio Group Answers question 2 and 5
+    private RadioGroup answersRadioGroupQuestionSecond;
+    private RadioGroup answersRadioGroupQuestionFifth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createMessages();
+
+        answerCorrectFirstQuestionFirst = (CheckBox) findViewById(R.id.question_first_answer_correct_first_check_box);
+        answerCorrectSecondQuestionFirst = (CheckBox) findViewById(R.id.question_first_answer_correct_second_check_box);
+        answerWrongQuestionFirst = (CheckBox) findViewById(R.id.question_first_answer_wrong_check_box);
+        answerCorrectQuestionSecond = (RadioButton) findViewById(R.id.question_second_answer_correct_radio_button);
+        answerCorrectQuestionThird = (EditText) findViewById(R.id.question_third_answer_correct_edit_text);
+        answerCorrectQuestionFourth = (EditText) findViewById(R.id.question_fourth_answer_correct_edit_text);
+        answerCorrectQuestionFifth = (RadioButton) findViewById(R.id.question_fifth_answer_correct_radio_button);
+        answersRadioGroupQuestionSecond = (RadioGroup) findViewById(R.id.question_second_radio_group);
+        answersRadioGroupQuestionFifth = (RadioGroup) findViewById(R.id.question_fifth_radio_group);
     }
 
     /**
@@ -46,11 +77,9 @@ public class MainActivity extends AppCompatActivity {
      * This method check answer on the question no 1.
      */
     private void checkFirstQuestionAnswer() {
-        CheckBox answerCorrectFirst = (CheckBox) findViewById(R.id.question_first_answer_correct_first_check_box);
-        CheckBox answerCorrectSecond = (CheckBox) findViewById(R.id.question_first_answer_correct_second_check_box);
-        CheckBox answerWrong = (CheckBox) findViewById(R.id.question_first_answer_wrong_check_box);
-
-        boolean answer = answerCorrectFirst.isChecked() && answerCorrectSecond.isChecked() && !answerWrong.isChecked();
+        boolean answer = answerCorrectFirstQuestionFirst.isChecked()
+                && answerCorrectSecondQuestionFirst.isChecked()
+                && !answerWrongQuestionFirst.isChecked();
 
         addPoint(answer);
     }
@@ -59,17 +88,14 @@ public class MainActivity extends AppCompatActivity {
      * This method check answer on the question no 2.
      */
     private void checkSecondQuestionAnswer() {
-        RadioButton answerCorrect = (RadioButton) findViewById(R.id.question_second_answer_correct_radio_button);
-
-        addPoint(answerCorrect.isChecked());
+        addPoint(answerCorrectQuestionSecond.isChecked());
     }
 
     /**
      * This method check answer on the question no 3.
      */
     private void checkThirdQuestionAnswer() {
-        EditText answerCorrect = (EditText) findViewById(R.id.question_third_answer_correct_edit_text);
-        boolean answer = answerCorrect.getText().toString().trim().equals(getString(R.string.question_third_answer_correct));
+        boolean answer = answerCorrectQuestionThird.getText().toString().trim().equals(getString(R.string.question_third_answer_correct));
 
         addPoint(answer);
     }
@@ -78,8 +104,7 @@ public class MainActivity extends AppCompatActivity {
      * This method check answer on the question no 4.
      */
     private void checkFourthQuestionAnswer() {
-        EditText answerCorrect = (EditText) findViewById(R.id.question_fourth_answer_correct_edit_text);
-        boolean answer = answerCorrect.getText().toString().trim().equals(getString(R.string.question_fourth_answer_correct));
+        boolean answer = answerCorrectQuestionFourth.getText().toString().trim().equals(getString(R.string.question_fourth_answer_correct));
 
         addPoint(answer);
     }
@@ -88,8 +113,7 @@ public class MainActivity extends AppCompatActivity {
      * This method check answer on the question no 5.
      */
     private void checkFifthQuestionAnswer() {
-        RadioButton answerCorrect = (RadioButton) findViewById(R.id.question_fifth_answer_correct_radio_button);
-        boolean answer = answerCorrect.isChecked();
+        boolean answer = answerCorrectQuestionFifth.isChecked();
 
         addPoint(answer);
     }
@@ -150,9 +174,9 @@ public class MainActivity extends AppCompatActivity {
     private void resetCheckBox() {
         List<CheckBox> answersQuestionFirst = new ArrayList<CheckBox>();
 
-        answersQuestionFirst.add((CheckBox) findViewById(R.id.question_first_answer_correct_first_check_box));
-        answersQuestionFirst.add((CheckBox) findViewById(R.id.question_first_answer_correct_second_check_box));
-        answersQuestionFirst.add((CheckBox) findViewById(R.id.question_first_answer_wrong_check_box));
+        answersQuestionFirst.add(answerCorrectFirstQuestionFirst);
+        answersQuestionFirst.add(answerCorrectSecondQuestionFirst);
+        answersQuestionFirst.add(answerWrongQuestionFirst);
 
         for (CheckBox element : answersQuestionFirst) {
             if (element.isChecked()) {
@@ -167,8 +191,8 @@ public class MainActivity extends AppCompatActivity {
     private void resetEditText() {
         List<EditText> answersQuestionsEditText = new ArrayList<EditText>();
 
-        answersQuestionsEditText.add((EditText) findViewById(R.id.question_third_answer_correct_edit_text));
-        answersQuestionsEditText.add((EditText) findViewById(R.id.question_fourth_answer_correct_edit_text));
+        answersQuestionsEditText.add(answerCorrectQuestionThird);
+        answersQuestionsEditText.add(answerCorrectQuestionFourth);
 
         for (EditText element : answersQuestionsEditText) {
             element.setText("");
@@ -181,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
     private void resetRadioGroup() {
         List<RadioGroup> answersQuestionRadioGroup = new ArrayList<RadioGroup>();
 
-        answersQuestionRadioGroup.add((RadioGroup) findViewById(R.id.question_second_radio_group));
-        answersQuestionRadioGroup.add((RadioGroup) findViewById(R.id.question_fifth_radio_group));
+        answersQuestionRadioGroup.add(answersRadioGroupQuestionSecond);
+        answersQuestionRadioGroup.add(answersRadioGroupQuestionFifth);
 
         for (RadioGroup element : answersQuestionRadioGroup) {
             element.clearCheck();
